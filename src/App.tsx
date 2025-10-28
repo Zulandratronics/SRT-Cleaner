@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import MenuBar from './components/MenuBar';
 import Sidebar from './components/Sidebar';
 import Toolbar from './components/Toolbar';
@@ -34,7 +34,6 @@ function App() {
   const [isPluginVisible, setIsPluginVisible] = useState(true);
   const [notifications, setNotifications] = useState<NotificationState[]>([]);
   const [hasSelection, setHasSelection] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ line: 1, col: 1 });
 
   // Update undo/redo history when content changes
   useEffect(() => {
@@ -181,7 +180,7 @@ function App() {
           />
           <StatusBar
             currentFile={currentFile}
-            cursorPosition={cursorPosition}
+            cursorPosition={{ line: 1, col: 1 }}
             totalLines={totalLines}
           />
         </div>

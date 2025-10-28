@@ -60,7 +60,9 @@ const MenuBar: React.FC<MenuBarProps> = ({ onNewFile, onOpenFile, onSaveFile, on
                       key={index}
                       className="px-3 py-1 hover:bg-gray-700 cursor-pointer flex justify-between items-center text-sm"
                       onClick={() => {
-                        item.action();
+                        if (item.action) {
+                          item.action();
+                        }
                         setActiveMenu(null);
                       }}
                     >
