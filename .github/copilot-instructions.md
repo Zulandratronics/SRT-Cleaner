@@ -54,6 +54,32 @@ Keep changes minimal and preserve the simple in-memory file model unless you int
 
 If anything above is unclear or you want more examples (tests, CI, or specific component wiring), tell me which area to expand and I’ll iterate.
 
+## Building a Windows executable (optional)
+
+If you want a native Windows executable, this repo includes a minimal Electron wrapper and electron-builder config. High-level steps (already wired into package.json scripts):
+
+- Install dependencies:
+
+	```bash
+	npm ci
+	```
+
+- Build web assets and package for Windows (x64):
+
+	```bash
+	npm run package:win
+	```
+
+Notes and caveats:
+- Building Windows installers on Linux may require wine for some targets (NSIS). If you run into errors, either run the builder on Windows or install wine on your machine.
+- The Electron entrypoint is `electron/main.js`. In development you can run the dev server and run Electron against it with:
+
+	```bash
+	npm run dev & npm run electron:serve
+	```
+
+- The produced artifacts will be placed by electron-builder in `dist/` (check console output for exact path).
+
 ## Example: add a new cleaning option (remove speaker labels)
 
 This is a small concrete example showing the exact places to touch if you want to add a new cleaning option `removeSpeakerLabels` that strips leading speaker labels like `JOHN: Hello`.
